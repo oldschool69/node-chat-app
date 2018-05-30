@@ -22,14 +22,12 @@ io.on('connection', (socket) => {
 
     socket.on('createMessage', (message) => {
         console.log('New Message', message);
+        io.emit('newMessage', {
+            from: message.from,
+            text: message.text,
+            createdAt: new Date().getTime()
+        });
     });
-
-    socket.emit('newMessage', {
-        from: 'Flavio Oliveira',
-        text: 'Blz ai contigo?',
-        createdAt: 123123
-    });
-
 });
 
 
