@@ -19,6 +19,17 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log('Client disconnected');
     });
+
+    socket.on('createMessage', (message) => {
+        console.log('New Message', message);
+    });
+
+    socket.emit('newMessage', {
+        from: 'Flavio Oliveira',
+        text: 'Blz ai contigo?',
+        createdAt: 123123
+    });
+
 });
 
 
